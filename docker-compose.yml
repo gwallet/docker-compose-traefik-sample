@@ -3,8 +3,18 @@ version: "2.1"
 services:
   api:
     build: api
+    networks:
+      - main
+    ports:
+      - ${API_OPEN_PORT}:8080
 
   web:
     build: web
+    networks:
+      - main
     ports:
-      - 8080:8080
+      - ${WEB_OPEN_PORT}:8080
+
+networks:
+  main:
+    external: true
