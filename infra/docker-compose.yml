@@ -1,0 +1,13 @@
+version: "2.1"
+
+services:
+  traefik:
+    image: "traefik:1.7"
+    command: "--debug --docker --docker.watch=true --docker.exposedbydefault=false --web"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: host

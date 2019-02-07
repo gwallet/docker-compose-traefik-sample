@@ -1,0 +1,17 @@
+version: "2.1"
+
+services:
+  web:
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: "Host:tenant1.dockerhost"
+      traefik.port: 8080
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.20.1.0/24"
+          gateway: "172.20.1.254"
